@@ -34,6 +34,8 @@ This run is represented in the table as:
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
 | DG  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 78951308  |
 
+Use the `--cores <N>` arguement to specify the number of cores to dedicate to the run, where if not specified the default will resort to the number available.
+
 ### Random seeds
 
 The random seeds required to produce the results in the paper are given in the following table.
