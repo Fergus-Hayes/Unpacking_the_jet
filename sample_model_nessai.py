@@ -73,7 +73,12 @@ def main(path, structure, GW170817, GW190425, rates, beta=1, burn=2000, draws=10
     if not structure:
         structure = str(path.split('/')[-3].split('_')[0])
 
-    path = path+'/'+label+'/temp/'+str(structure)+'/'+str(int(np.round(beta)))+'/'
+    if Lfixed:
+        Lstr='schechter_luminosity'
+    else:
+        Lstr='hierarchical_luminosity'
+
+    path = path+'/'+Lstr+'/'+label+'/temp/'+str(structure)+'/'+str(int(np.round(beta)))+'/'
 
     if not os.path.exists(path):
         os.makedirs(path)
