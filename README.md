@@ -10,7 +10,7 @@ An environment with both nessai and bibly are required. These can be installed v
 
 ## Recreating results
 
-To run the analysis for the Gaussian jet structure given GW170817 and a random seed of 73419243, use command:
+To run the analysis for the Gaussian jet structure given GW170817 and a random seed of 73419243, and save to a local directory './outpath' use command:
 
 ``` python sample_model_nessai.py --path ./outpath --struct GJ --GW170817 --randomseed 73419243 ```
 
