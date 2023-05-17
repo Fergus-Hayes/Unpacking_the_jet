@@ -22,6 +22,6 @@ LAB1="GW170817"
 LAB2="GW190425"
 LAB4="sGRB_rate_+_GW170817"
 LAB5="sGRB_rate_+_GW170817_+_GW190425"
-python3 plot_corner_multiplot.py --loc ${LOC1} ${LOC2} ${LOC3} ${LOC4} ${LOC5} --labels ${LAB1} ${LAB2} ${LAB3} ${LAB4} ${LAB5} --outpath ${OUTPATH}${STRUCT}_${NAME}_ --JS ${STRUCT}
+python3 plotting_tools/plot_corner_multiplot.py --loc ${LOC1} ${LOC2} ${LOC3} ${LOC4} ${LOC5} --labels ${LAB1} ${LAB2} ${LAB3} ${LAB4} ${LAB5} --outpath ${OUTPATH}${STRUCT}_${NAME}_ --JS ${STRUCT}
 
 done
