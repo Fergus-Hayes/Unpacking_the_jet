@@ -15,10 +15,7 @@ def overlaid_corner(samples_list_, sample_labels_, labels, truths=None, label_kw
 
     # get some constants
     cmap = plt.cm.gist_rainbow
-    colors_ = np.array(['black','blue','violet', 'orange', 'red'])[::-1]#np.array(['black','violet','green','blue','red'])#np.array(cmap(np.linspace(0.5,1.,n)))[::-1]
-
-    #inds = np.logical_not(np.isnan(samples_list))
-    #print(inds)
+    colors_ = np.array(['black','blue','violet', 'orange', 'red'])[::-1]
     
     samples_list = []
     sample_labels = []
@@ -30,8 +27,6 @@ def overlaid_corner(samples_list_, sample_labels_, labels, truths=None, label_kw
             sample_labels.append(sample_labels_[i])
             colors.append(colors_[i])
 
-    #samples_list = np.array(samples_list)
-    #sample_labels = np.array(sample_labels)
     colors = np.array(colors)
 
     _, ndim = samples_list[0].shape
@@ -87,35 +82,6 @@ def overlaid_corner(samples_list_, sample_labels_, labels, truths=None, label_kw
     for ax in fig.get_axes():
         ax.tick_params(axis='both', labelsize=3+int(ndim*2))
 
-    #    if JS:
-    #        inset_ax = inset_axes(ax, 
-    #                              width="50%", # width = 30% of parent_bbox
-    #                              height="50%",
-    #                              loc=1)
-
-    #        inset_ax.imshow(mpimg.imread('plotting/JS_figures/'+JS+'_beam.png'))
-
-    if False:#JS:
-        Nvar = np.sqrt(len(fig.get_axes()))
-        inset_dim = np.floor(Nvar/3)
-        inset_x = Nvar - inset_dim + np.round(inset_dim/2.)
-        inset_y = Nvar - 2*inset_dim
-        ax = fig.get_axes()[int(Nvar*(inset_y-1)+inset_x)]
-        inset_size = str(inset_dim*100)
-        inset_ax = inset_axes(ax, 
-                              width=inset_size+"%", # width = 30% of parent_bbox
-                              height=inset_size+"%",
-                              #bbox_to_anchor=(0.,1.))
-                              loc=1)
-
-        inset_ax.set_xticks([])
-        inset_ax.set_yticks([])
-        inset_ax.imshow(mpimg.imread('plotting/JS_figures/'+JS+'_beam.png'))
-
-
-
-    #plt.savefig("corner.png")
-    #plt.close()
     return fig
 
 
@@ -127,7 +93,6 @@ def get_samples(loc, JS=False):
     #L0 = 10.**51.5
 
     injlabels = np.array(['theta_c', 'log R_BNS', 'log R_NSBH', 'eps_NSBH', 'LFc', 'E0'])
-    #'theta_c', 'theta_j', 's', 'R_BNS', 'R_NSBH', 'eps_NSBH'])
 
     try:
         with open(loc) as f:
@@ -137,10 +102,6 @@ def get_samples(loc, JS=False):
 
     samples_ = sample_file['posterior']['content']
     labels = np.array(sample_file['parameter_labels'])
-
-    #print(samples_.keys())
-    #print(labels)
-    #exit()
     labels_ = np.array(list(samples_.keys()))
 
     theta_labels = []
@@ -175,9 +136,6 @@ def get_samples(loc, JS=False):
         if label[:3]=='log':
             samples.append(np.array(samples_[label]))#np.log10(np.exp(np.array(samples_[label]))))
             plot_labels.append(r'log$_{10}$ $R_{'+label.split('_')[1]+'}$')# (Gpc$^{-3}\,$y$^{-1}$)')
-        #if label[0]=='E':
-        #    samples.append(np.log10(np.array(samples_[label])*L0))
-        #    plot_labels.append(r'log$_{10}$ $E_{'+str(label[1:])+'}$')# (ergs)')
         if label=='LFc':
             plot_labels.append(r'$\log_{10}$ $\Gamma_{0}$')
             samples.append(np.log10(np.array(samples_[label])))
@@ -205,9 +163,6 @@ def get_samples(loc, JS=False):
         if label=='L0':
             samples.append(np.array(samples_[label])+49.)
             plot_labels.append(r'$\log_{10}$ $L_{0}^{\ast}$')
-        #if label=='L0':
-        #    samples.append(np.array(samples_[label]))
-        #    plot_labels.append(r'$L_{0}^{\ast}$/$10^{52}\,$erg$\,$s$^{-1}$')
 
         if label=='alpha':
             samples.append(np.array(samples_[label]))
@@ -236,10 +191,6 @@ def get_samples(loc, JS=False):
             plot_labels[plot_labels==r'log$_{10}$ $\mathcal{C}$'] = r'$s$'
             samples[:,plot_labels==r'$s$'] = np.power(10.,samples[:,plot_labels==r'$s$'])
         if JS=='PZ':
-            #plot_labels[plot_labels==r'log$_{10}$ $\mathcal{A}$'] = r'$s$'
-            #samples[:,plot_labels==r'$s$'] = np.power(10.,samples[:,plot_labels==r'$s$'])
-            #plot_labels[plot_labels==r'log$_{10}$ $\mathcal{C}$'] = r'$a$'
-            #samples[:,plot_labels==r'$a$'] = np.power(10.,samples[:,plot_labels==r'$a$'])
             Ss = np.power(10.,samples[:,plot_labels==r'log$_{10}$ $\mathcal{A}$'])
             As = np.power(10.,samples[:,plot_labels==r'log$_{10}$ $\mathcal{C}$'])
             plot_labels[plot_labels==r'log$_{10}$ $\mathcal{A}$'] = r'$a$'
@@ -256,9 +207,7 @@ def main(locs, data_labels_, outpath, injectfile=False, JS=False):
     matplotlib.rcParams['mathtext.fontset'] = 'stix'
     matplotlib.rcParams['font.family'] = 'STIXGeneral'
 
-    data_labels = data_labels_#[]
-    #for data_label in data_labels_:
-    #    data_labels.append(data_label.replace('_',' '))
+    data_labels = data_labels_
 
     injections_ = None
     injections=[]
@@ -267,7 +216,6 @@ def main(locs, data_labels_, outpath, injectfile=False, JS=False):
         injections_ = np.load(injectfile)
         print(injections_)
         injections_[0] = np.rad2deg(injections_[0])
-        #injections_[:1] = np.rad2deg(injections_[:1])
         injections_[1:3] = np.log10(np.exp(injections_[1:3]))
         injections_[-1] = np.log10(injections_[-1])
     injections = injections_
@@ -281,7 +229,6 @@ def main(locs, data_labels_, outpath, injectfile=False, JS=False):
 
 
     fig = overlaid_corner(data_samples, data_labels, labels=plot_labels, truths=injections, label_kwargs={"fontsize": 16}, show_titles=True, JS=JS)
-    #fig.savefig(outpath+'joint_corner_'+"_".join(data_labels).replace(" ", "_")+'.png')
     fig.savefig(outpath+'joint_corner.png')
 
 
