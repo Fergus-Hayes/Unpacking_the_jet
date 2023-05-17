@@ -8,6 +8,10 @@ An environment with both nessai and bibly are required. These can be installed v
 
 ``` pip install nessai bilby ```
 
+Or alternatively install the packages in `requirements.txt` via:
+
+``` pip install -r requirements.txt ```
+
 ## Recreating results
 
 To run the analysis for the Gaussian jet structure given GW170817 and a random seed of 73419243, and save to a local directory './outpath' use command:
