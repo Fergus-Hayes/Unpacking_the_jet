@@ -441,7 +441,7 @@ def JS_model_interp_nessai(JS, thetavs, Fs, rs, sigmas, outdir, label, Nz_obs=Fa
         result = bilby.run_sampler(likelihood=likelihood, priors=priors, sampler='nessai', nlive=nlive, poolsize=poolsize,
                                outdir=outdir, label=label, plot=True, maximum_uninformed=maximum_uninformed,
                                flow_config=flow_config, analytic_priors=False, resume=True, update_poolsize=update_poolsize,
-                               reparameterisations=reparameterisations, max_threads=cores, n_pool=n_pool)
+                               reparameterisations=reparameterisations, max_threads=cores, n_pool=n_pool, allow_multi_valued_likelihood=True)
     elif sampler=='dynesty':
         result = bilby.run_sampler(likelihood=likelihood, priors=priors, sampler='dynesty', nlive=draws,
                                    outdir=outdir, label=label, plot=True)
