@@ -82,3 +82,11 @@ The random seeds required to produce the results in the paper are given in the f
 | DG | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  | 29910191 |
 | DG |  |  | :heavy_check_mark: |  | 35185720 |
 | DG |  | :heavy_check_mark: |  |  | 12767752 |
+
+## Plotting results
+
+To produce the plots found in the paper in a directory './figures', given the runs are stored in './outpath/', simply run:
+
+``` bash run_plot_all.sh './outpath/' ./figures ```
+
+which uses the plotting tools provided in `plotting_tools`.
