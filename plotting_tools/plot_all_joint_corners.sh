@@ -12,11 +12,11 @@ declare -a JSS=("GJ" "TH" "PL" "DG")
 
 for STRUCT in "${JSS[@]}" ; do
 
-LOC3="${INPATH}rates_${STRUCT}/`ls ${INPATH}rates_${STRUCT}/`/temp/${STRUCT}/1/trace/rates_${STRUCT}_result.json"
-LOC1="${INPATH}GW170817_${STRUCT}/`ls ${INPATH}GW170817_${STRUCT}/`/temp/${STRUCT}/1/trace/GW170817_${STRUCT}_result.json"
-LOC2="${INPATH}GW190425_${STRUCT}/`ls ${INPATH}GW190425_${STRUCT}/`/temp/${STRUCT}/1/trace/GW190425_${STRUCT}_result.json"
-LOC4="${INPATH}rates_GW170817_${STRUCT}/`ls ${INPATH}rates_GW170817_${STRUCT}/`/temp/${STRUCT}/1/trace/rates_GW170817_${STRUCT}_result.json"
-LOC5="${INPATH}rates_GW170817_GW190425_${STRUCT}/`ls ${INPATH}rates_GW170817_GW190425_${STRUCT}/`/temp/${STRUCT}/1/trace/rates_GW170817_GW190425_${STRUCT}_result.json"
+LOC3="${INPATH}rates_${STRUCT}/temp/${STRUCT}/1/trace/rates_${STRUCT}_result.json"
+LOC1="${INPATH}GW170817_${STRUCT}/temp/${STRUCT}/1/trace/GW170817_${STRUCT}_result.json"
+LOC2="${INPATH}GW190425_${STRUCT}/temp/${STRUCT}/1/trace/GW190425_${STRUCT}_result.json"
+LOC4="${INPATH}rates_GW170817_${STRUCT}/temp/${STRUCT}/1/trace/rates_GW170817_${STRUCT}_result.json"
+LOC5="${INPATH}rates_GW170817_GW190425_${STRUCT}/temp/${STRUCT}/1/trace/rates_GW170817_GW190425_${STRUCT}_result.json"
 LAB3="sGRB_rate"
 LAB1="GW170817"
 LAB2="GW190425"
